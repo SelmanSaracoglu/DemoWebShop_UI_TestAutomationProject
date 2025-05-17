@@ -51,4 +51,8 @@ public class ReusableMethods {
     public static boolean isListNotEmpty(List<WebElement> elementList) {
         return elementList != null && !elementList.isEmpty();
     }
+
+    public static boolean isListEmpty(List<WebElement> elementList) {
+        return elementList == null || elementList.isEmpty();
+    }
 }

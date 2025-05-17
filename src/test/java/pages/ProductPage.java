@@ -13,15 +13,15 @@ public class ProductPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//input[@value = 'Add to cart']")
-    public WebElement AddtoCart;
+    @FindBy(xpath = "//input[@class='button-1 add-to-cart-button']")
+    public WebElement addtoCart;
     @FindBy(xpath = "//div[@class='item-box']//input[@value='Add to cart']")
     public List<WebElement> addToCartButtons;
     @FindBy(xpath = "//p[@class='content']")
     public WebElement addtoCartSuccessMessage;
 
 
-    @FindBy(xpath = "//div[@class='item-box']")
+    @FindBy(xpath = "//h2[@class='product-title']/a")
     public List<WebElement> productList;
 
     public void clickRandomProduct() {

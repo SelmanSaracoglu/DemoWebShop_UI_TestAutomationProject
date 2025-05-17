@@ -39,7 +39,7 @@ public class HomePage {
     @FindBy(xpath = "//ul[@class='top-menu']//a[not(ancestor::ul[@class='sublist firstLevel'])]")
     public List<WebElement> categories;
 
-    @FindBy(xpath = "//ul[@class='top-menu']//ul[@class='sublist firstLevel']//a")
+    @FindBy(xpath = "//div[@class='sub-category-item']")
     public List<WebElement> subCategories;
 
     /*

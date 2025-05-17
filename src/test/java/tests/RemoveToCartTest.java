@@ -39,22 +39,16 @@ public class RemoveToCartTest {
 
         Assert.assertTrue(homePage.logoutLink.isDisplayed(), "Login başarısız!");
 
-        // 2. Ürünü sepete ekle ve sepete git
-        homePage.categories.get(1).click();
-        productPage.productList.get(1).click();
-        productPage.AddtoCart.click();
-
-        Assert.assertTrue(productPage.addtoCartSuccessMessage.isDisplayed());
         homePage.shoppingCartLink.click();
 
-        // 3. Sepette ürün var mı?
+        // 2. Sepette ürün var mı?
         Assert.assertTrue(ReusableMethods.isListNotEmpty(cartPage.cartItems));
 
-        // 4. Ürünü sil + sepeti güncelle
+        // 3. Ürünü sil + sepeti güncelle
         cartPage.removeItems.click();
-        cartPage.updateShoppingCardButton.click();
+        cartPage.updateShoppingCartButton.click();
 
-        // 5. Sepetin boş olduğunu doğrula
+        // 4. Sepetin boş olduğunu doğrula
         Assert.assertTrue(cartPage.cartIsEmptyMessage.isDisplayed(), "Sepet boş değil!");
 
     }

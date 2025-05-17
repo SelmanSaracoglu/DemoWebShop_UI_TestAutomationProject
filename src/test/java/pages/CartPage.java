@@ -22,7 +22,7 @@ public class CartPage {
     public WebElement removeItems;
 
     @FindBy(xpath = "//input[@value='Update shopping cart']")
-    public WebElement updateShoppingCardButton;
+    public WebElement updateShoppingCartButton;
     @FindBy(xpath = "//input[@value='Continue shopping']")
     public WebElement continueShoppingButton;
 
