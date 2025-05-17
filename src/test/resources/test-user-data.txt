@@ -1,0 +1,13 @@
+----- Yeni Test Kullanıcısı -----
+First Name: Quinn
+Last Name: Abernathy
+Email: rasheeda.grant@yahoo.com
+Password: eez!QO2%Oeo
+----------------------------------
+----- Yeni Test Kullanıcısı -----
+First Name: Charles
+Last Name: Rippin
+Email: isiah.blanda@gmail.com
+Password: g2&2M%90
+----------------------------------
+
