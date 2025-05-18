@@ -1,7 +1,5 @@
 package tests;
 
-import com.beust.ah.A;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -17,6 +15,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class SearchBoxTests {
@@ -55,7 +54,6 @@ public class SearchBoxTests {
                 {"gi"},
         };
     }
-
 
     @Test
     public void E01_SearchBox_positiveTest() {
@@ -107,7 +105,6 @@ public class SearchBoxTests {
 
         homePage.searchBox.sendKeys(keyword + Keys.ENTER);
         ReusableMethods.waitForSeconds(1);
-
 
         System.out.println("Aranan Kelime: " + keyword);
 
@@ -257,6 +254,83 @@ public class SearchBoxTests {
 
     }
 
+    @Test
+    public void E12_SearchBox_XSSInjectionTest() {
+        SoftAssert softAssert = new SoftAssert();
+
+        String[] maliciousInputs = {
+                "<script>alert('xss')</script>",
+                "' OR '1'='1",
+                "admin' --",
+                "'; DROP TABLE users;",
+                "\"><img src=x onerror=alert(1)>",
+                "<svg/onload=alert('XSS')>"
+        };
+
+        for (String input : maliciousInputs) {
+
+            homePage.searchBox.clear();
+            homePage.searchBox.sendKeys(input + Keys.ENTER);
+            ReusableMethods.waitForSeconds(1);
+
+            System.out.println("Denenen input: " + input);
+
+            List<WebElement> resultElements = Driver.getDriver()
+                    .findElements(By.xpath("//strong[@class='result']"));
+
+            if (!resultElements.isEmpty()) {
+                softAssert.assertTrue(resultElements.get(0).isDisplayed(),
+                        "'no-result' mesajı görünmüyor → input: " + input);
+            } else {
+                softAssert.fail("❌ 'no-result' elementi DOM’da hiç oluşmadı → input: " + input);
+            }
+
+            Driver.getDriver().navigate().back(); // her seferinde yeniden arama için
+        }
+        softAssert.assertAll();
+
+    }
+
+    @Test(dataProvider = "searchKeywords")
+    public void E13_SearchBox_SearchURLVerificationTest(String keyword){
+        String expectedInUrl = "search?q=" + keyword;
+
+        homePage.searchBox.clear();
+        homePage.searchBox.sendKeys(keyword + Keys.ENTER);
+        ReusableMethods.waitForSeconds(1);
+
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        System.out.println("Arama sonrası URL: " + currentUrl);
+        Assert.assertTrue(currentUrl.contains(expectedInUrl),
+                "URL'de beklenen query string yok! → Beklenen: " + expectedInUrl);
+
+    }
+
+    @Test
+    public void E14_SearchBox_AutoCompleteSuggestionTest() {
+        String[] partialKeywords = { "boo", "lap", "gif", "cam" };
+
+        for (String keyword : partialKeywords){
+            homePage.searchBox.clear();
+            homePage.searchBox.sendKeys(keyword);
+            ReusableMethods.waitForSeconds(2); // bekleme suggestion'ın DOM'a düşmesi için
+
+            List<WebElement> suggestions = homePage.suggestionList;
+            System.out.println(keyword + "' için gelen öneriler: ");
+            for (WebElement suggestion : suggestions) {
+                System.out.println(suggestion.getText());
+            }
+            Assert.assertTrue(ReusableMethods.isListNotEmpty(suggestions),
+                    keyword + "' için hiçbir öneri gösterilmedi.");
+        }
+
+
+
+
+
+
+
+    }
 
     @AfterMethod
     public void tearDown() {

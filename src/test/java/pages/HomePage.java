@@ -42,6 +42,9 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='sub-category-item']")
     public List<WebElement> subCategories;
 
+    @FindBy(xpath = "//ul[contains(@class,'ui-autocomplete')]//li")
+    public List<WebElement> suggestionList;
+
     /*
     @FindBy(xpath = "//a[contains(text(),'Books')]")
     public WebElement booksCategory;
