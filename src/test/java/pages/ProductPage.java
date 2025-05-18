@@ -24,6 +24,9 @@ public class ProductPage {
     @FindBy(xpath = "//h2[@class='product-title']/a")
     public List<WebElement> productList;
 
+    @FindBy(xpath = "//div[@class='page-title']/h1")
+    public WebElement categoryTitle;
+
     public void clickRandomProduct() {
         Random random = new Random();
         int index = random.nextInt(productList.size());
