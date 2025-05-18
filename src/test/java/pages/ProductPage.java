@@ -23,9 +23,16 @@ public class ProductPage {
 
     @FindBy(xpath = "//h2[@class='product-title']/a")
     public List<WebElement> productList;
+    @FindBy(xpath = "//strong[@class='result']")
+    public WebElement noResultFound;
+    @FindBy(xpath = "//strong[@class= 'warning']")
+    public WebElement minLengthWarningMessage;
 
     @FindBy(xpath = "//div[@class='page-title']/h1")
     public WebElement categoryTitle;
+
+    @FindBy(xpath = "//h2[@class='product-title']")
+    public List<WebElement> productTitles;
 
     public void clickRandomProduct() {
         Random random = new Random();
