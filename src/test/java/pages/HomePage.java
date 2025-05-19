@@ -45,6 +45,42 @@ public class HomePage {
     @FindBy(xpath = "//ul[contains(@class,'ui-autocomplete')]//li")
     public List<WebElement> suggestionList;
 
+    // Newsletter Block
+    @FindBy(xpath = "div[@class='block block-newsletter']" )
+    public WebElement newsletterBlock;
+    @FindBy(xpath = "//strong[contains(text(), 'Newsletter')]")
+    public  WebElement newsLetterTitle;
+    @FindBy(id = "newsletter-email")
+    public WebElement newsLetterSignUpBox;
+    @FindBy(id = "newsletter-subscribe-button")
+    public WebElement subscribeButton;
+
+    //Footer
+    @FindBy(xpath = "//div[@class='footer']")
+    public WebElement footerBlock;
+
+    @FindBy(xpath = "//div[@class='footer']//div[@class='footer-menu-wrapper']//div")
+    public List<WebElement> footerMenuSections;
+
+    // Sadece Information sütunundaki linkler
+    @FindBy(xpath = "//div[@class='column information']//ul//li")
+    public List<WebElement> informationLinks;
+    // Customer Service sütunu
+    @FindBy(xpath = "//div[@class='column customer-service']//ul//li")
+    public List<WebElement> customerServiceLinks;
+    // My Account sütunu
+    @FindBy(xpath = "//div[@class='column my-account']//ul//li")
+    public List<WebElement> myAccountLinks;
+    // Follow Us (Sosyal medya ikonları)
+    @FindBy(xpath = "//div[@class='column follow-us']//ul//li")
+    public List<WebElement> followUsLinks;
+
+    @FindBy(xpath = "//div[@class = 'footer-poweredby']")
+    public WebElement powerdByText;
+
+    @FindBy(xpath = "//div[@class = 'footer-disclaimer']")
+    public WebElement footerDisclaimerText;
+
     /*
     @FindBy(xpath = "//a[contains(text(),'Books')]")
     public WebElement booksCategory;

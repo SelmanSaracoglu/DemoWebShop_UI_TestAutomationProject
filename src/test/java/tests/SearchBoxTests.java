@@ -336,6 +336,7 @@ public class SearchBoxTests {
     public void tearDown() {
         Driver.closeDriver();
     }
+
 }
 
 
