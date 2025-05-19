@@ -54,25 +54,25 @@ public class HomePage {
     public WebElement newsLetterSignUpBox;
     @FindBy(id = "newsletter-subscribe-button")
     public WebElement subscribeButton;
+    @FindBy(id = "newsletter-result-block")
+    public WebElement subscriptionMessage;
 
     //Footer
     @FindBy(xpath = "//div[@class='footer']")
     public WebElement footerBlock;
-
     @FindBy(xpath = "//div[@class='footer']//div[@class='footer-menu-wrapper']//div")
     public List<WebElement> footerMenuSections;
-
     // Sadece Information sütunundaki linkler
-    @FindBy(xpath = "//div[@class='column information']//ul//li")
+    @FindBy(xpath = "//div[@class='column information']//ul//li//a")
     public List<WebElement> informationLinks;
     // Customer Service sütunu
-    @FindBy(xpath = "//div[@class='column customer-service']//ul//li")
+    @FindBy(xpath = "//div[@class='column customer-service']//ul//li//a")
     public List<WebElement> customerServiceLinks;
     // My Account sütunu
-    @FindBy(xpath = "//div[@class='column my-account']//ul//li")
+    @FindBy(xpath = "//div[@class='column my-account']//ul//li//a")
     public List<WebElement> myAccountLinks;
     // Follow Us (Sosyal medya ikonları)
-    @FindBy(xpath = "//div[@class='column follow-us']//ul//li")
+    @FindBy(xpath = "//div[@class='column follow-us']//ul//li//a")
     public List<WebElement> followUsLinks;
 
     @FindBy(xpath = "//div[@class = 'footer-poweredby']")
@@ -80,6 +80,19 @@ public class HomePage {
 
     @FindBy(xpath = "//div[@class = 'footer-disclaimer']")
     public WebElement footerDisclaimerText;
+
+    //Slider
+    @FindBy(id = "nivo-slider")
+    public WebElement mainSlider;
+
+    @FindBy(xpath = "//div[@class= 'nivo-controlNav']//a")
+    public List<WebElement> sliderClickableItems;
+
+    @FindBy(css = "//a[@class= 'nivo-prevNav']")
+    public WebElement sliderLeftArrow;
+
+    @FindBy(css = "//a[@class= 'nivo-nextNav']")
+    public WebElement sliderRightArrow;
 
     /*
     @FindBy(xpath = "//a[contains(text(),'Books')]")
@@ -102,6 +115,8 @@ public class HomePage {
     //nextInt(n) metodu,
     //Java’daki Random sınıfına ait bir metottur ve
     // 0 (dahil) ile n (hariç) arasında rastgele bir tamsayı üretir.
+    @FindBy (xpath = "//a[contains(text(), 'Sitemap')]")
+    public WebElement siteMapLink;
 
     public void clickRandomCategory() {
         Random random = new Random();
