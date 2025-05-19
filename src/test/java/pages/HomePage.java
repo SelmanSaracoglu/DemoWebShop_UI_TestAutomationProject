@@ -23,7 +23,6 @@ public class HomePage {
     public WebElement loginLink;
     @FindBy(linkText = "Log out")
     public WebElement logoutLink;
-
     @FindBy(linkText = "Shopping cart")
     public WebElement shoppingCartLink;
     @FindBy(linkText = "Wishlist")
@@ -81,17 +80,17 @@ public class HomePage {
     @FindBy(xpath = "//div[@class = 'footer-disclaimer']")
     public WebElement footerDisclaimerText;
 
-    //Slider
+    //---------------------------- Slider ---------------------------
     @FindBy(id = "nivo-slider")
     public WebElement mainSlider;
 
     @FindBy(xpath = "//div[@class= 'nivo-controlNav']//a")
     public List<WebElement> sliderClickableItems;
 
-    @FindBy(css = "//a[@class= 'nivo-prevNav']")
+    @FindBy(xpath = "//a[@class= 'nivo-prevNav']")
     public WebElement sliderLeftArrow;
 
-    @FindBy(css = "//a[@class= 'nivo-nextNav']")
+    @FindBy(xpath = "//a[@class= 'nivo-nextNav']")
     public WebElement sliderRightArrow;
 
     /*
