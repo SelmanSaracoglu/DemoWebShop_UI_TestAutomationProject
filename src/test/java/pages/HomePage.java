@@ -41,6 +41,29 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='sub-category-item']")
     public List<WebElement> subCategories;
 
+    @FindBy(xpath = "//ul[@class='top-menu']//a[contains(text(), 'Desktops')]")
+    public WebElement desktopsLink;
+    @FindBy(xpath = "//ul[@class='top-menu']//a[contains(text(), 'Notebooks')]")
+    public WebElement notebooksLink;
+    @FindBy(xpath = "//ul[@class='top-menu']//a[contains(text(), 'Accessories')]")
+    public WebElement accessoriesLink;
+
+    public List<WebElement> getComputersSubmenuLinks() {
+        return List.of(desktopsLink, notebooksLink, accessoriesLink);
+    }
+
+    @FindBy(xpath = "//ul[@class='top-menu']//a[contains(text(), 'Camera, photo')]")
+    public WebElement cameraPhotoLink;
+    @FindBy(xpath = "//ul[@class='top-menu']//a[contains(text(), 'Cell phones')]")
+    public WebElement cellPhonesLink;
+
+    public List<WebElement> getElectronicsSubmenuLinks() {
+        return List.of(cameraPhotoLink, cellPhonesLink);
+    }
+
+
+
+
     @FindBy(xpath = "//ul[contains(@class,'ui-autocomplete')]//li")
     public List<WebElement> suggestionList;
 

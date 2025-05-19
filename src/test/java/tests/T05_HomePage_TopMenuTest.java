@@ -1,6 +1,7 @@
 package tests;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
@@ -76,6 +77,36 @@ public class T05_HomePage_TopMenuTest {
 
             Assert.assertTrue(actual.equalsIgnoreCase(expected),
                     "Menü sırası beklenenden farklı!");
+        }
+    }
+
+    @Test(priority = 3)
+    public void testHoverComputersAndCheckSubmenusVisible() {
+        Actions actions = new Actions(Driver.getDriver());
+
+        // Ana menü öğesine gel
+        actions.moveToElement(homePage.categories.get(1)).perform();
+        ReusableMethods.waitForSeconds(1);
+
+        for (WebElement subLink : homePage.getComputersSubmenuLinks()) {
+            Assert.assertTrue(subLink.isDisplayed(),
+                    "Alt menü görünmüyor: " + subLink.getText());
+            System.out.println("Alt menü görünüyor: " + subLink.getText());
+        }
+    }
+
+    @Test(priority = 4)
+    public void testHoverElectronicsAndCheckSubmenusVisible() {
+        Actions actions = new Actions(Driver.getDriver());
+
+        // Ana menü öğesine gel
+        actions.moveToElement(homePage.categories.get(2)).perform();
+        ReusableMethods.waitForSeconds(1);
+
+        for (WebElement subLink : homePage.getElectronicsSubmenuLinks()) {
+            Assert.assertTrue(subLink.isDisplayed(),
+                    "Alt menü görünmüyor: " + subLink.getText());
+            System.out.println("Alt menü görünüyor: " + subLink.getText());
         }
     }
 
