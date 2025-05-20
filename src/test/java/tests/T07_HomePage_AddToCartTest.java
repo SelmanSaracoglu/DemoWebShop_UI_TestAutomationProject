@@ -19,7 +19,7 @@ import utilities.ReusableMethods;
 
 import java.util.Random;
 
-public class AddToCartTest {
+public class T07_HomePage_AddToCartTest {
 
     HomePage homePage;
     LoginPage loginPage;
@@ -155,6 +155,132 @@ public class AddToCartTest {
         Assert.assertTrue(cartPage.checkOutTitle.isDisplayed());
 
     }
+
+    @Test(priority = 1)
+    public void testAddMultipleProductsToCart() {
+        homePage.loginLink.click();
+
+        String email = ConfigReader.getProperty("Email");
+        String password = ConfigReader.getProperty("Password");
+
+        loginPage.emailInput.sendKeys(email);
+        loginPage.passwordInput.sendKeys(password);
+        loginPage.loginButton.click();
+
+        Assert.assertTrue(homePage.logoutLink.isDisplayed(), "Login başarısız!");
+
+        homePage.categories.get(0).click();
+        productPage.productList.get(0).click();
+        productPage.addtoCart.click();
+        homePage.categories.get(0).click();
+        productPage.productList.get(2).click();
+        productPage.addtoCart.click();
+        homePage.categories.get(0).click();
+        productPage.productList.get(4).click();
+        productPage.addtoCart.click();
+
+        homePage.shoppingCartLink.click();
+
+        Assert.assertEquals(cartPage.cartItems.size(), 3,"Sepette 3 ürün yok!");
+
+        // Her ürünün fiyatını ve miktarını kontrol et
+        for (int i = 0; i < 3; i++) {
+            double unitPrice =
+                    Double.parseDouble(cartPage.itemUnitPrices
+                            .get(i).getText().replace("$", ""));
+            int quatity = Integer.parseInt(cartPage.itemQuantities
+                    .get(i).getAttribute("value"));
+            double subtotal =
+                    Double.parseDouble(cartPage.itemSubtotals
+                            .get(i).getText().replace("$", ""));
+
+            double expectedSubtotal = unitPrice*quatity;
+            Assert.assertEquals(subtotal, expectedSubtotal, 0.01,
+                    "Ürün " + (i + 1) + " için subtotal yanlış!");
+        }
+        System.out.println("✅ Uc ürün sepete eklendi ve fiyatlar doğru hesaplandı.");
+    }
+
+    @Test(priority = 2)
+    public void testUpdateCartQuantity() {
+        homePage.loginLink.click();
+
+        String email = ConfigReader.getProperty("Email");
+        String password = ConfigReader.getProperty("Password");
+
+        loginPage.emailInput.sendKeys(email);
+        loginPage.passwordInput.sendKeys(password);
+        loginPage.loginButton.click();
+
+        Assert.assertTrue(homePage.logoutLink.isDisplayed(), "Login başarısız!");
+
+        homePage.shoppingCartLink.click();
+
+        double unitPrice = Double.parseDouble(
+                cartPage.itemUnitPrices
+                        .get(0).getText().replace("$", ""));
+
+        WebElement quantityInput = cartPage.itemQuantities.get(0);
+        quantityInput.clear();
+        quantityInput.sendKeys("2");
+
+        cartPage.updateShoppingCartButton.click();
+        ReusableMethods.waitForSeconds(1);
+
+        double subtotal = Double.parseDouble(
+                cartPage.itemSubtotals
+                        .get(0).getText().replace("$", ""));
+
+        double expectedSubtotal= 2*unitPrice;
+        Assert.assertEquals(subtotal, expectedSubtotal, 0.01,
+                "Subtotal yanlış! Beklenen: $" + expectedSubtotal + ", Gerçek: $" + subtotal);
+
+        System.out.println("✅ Quantity 2 olarak güncellendi, fiyat doğru hesaplandı.");
+
+    }
+
+    @Test(priority = 3)
+    public void testRemoveItemFromCart() {
+
+        homePage.loginLink.click();
+
+        String email = ConfigReader.getProperty("Email");
+        String password = ConfigReader.getProperty("Password");
+
+        loginPage.emailInput.sendKeys(email);
+        loginPage.passwordInput.sendKeys(password);
+        loginPage.loginButton.click();
+
+        Assert.assertTrue(homePage.logoutLink.isDisplayed(), "Login başarısız!");
+
+        homePage.shoppingCartLink.click();
+        int size = cartPage.cartItems.size();
+        Assert.assertTrue(size > 0, "Sepette hiç ürün yok, silinecek ürün bulunamadı!");
+
+        //WebElement quantity = cartPage.itemQuantities.get(0);
+        //int quantityValue = Integer.parseInt(quantity.getAttribute("value"));
+
+        cartPage.removeItems.get(0).click();
+
+        cartPage.updateShoppingCartButton.click();
+        ReusableMethods.waitForSeconds(1);
+
+        int updatedSize = cartPage.cartItems.size();
+
+        if (updatedSize == 0){
+            Assert.assertTrue(cartPage.cartIsEmptyMessage.isDisplayed(),
+                    "Sepet boş ama 'sepet boş' mesajı gösterilmedi.");
+            System.out.println("Sepet tamamen boşaltıldı.");
+        }else {
+            Assert.assertEquals(updatedSize,size-1,
+                    "Ürün silinmedi! Beklenen boyut: " + (size-1) + ", Gerçek: " + updatedSize);
+            System.out.println("Ürün silindi. Sepette kalan ürün sayısı: " + updatedSize);
+        }
+
+
+    }
+
+    @Test(priority = 4)
 
     @AfterMethod
     public void tearDown() {

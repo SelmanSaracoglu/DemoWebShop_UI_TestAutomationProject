@@ -23,8 +23,10 @@ public class HomePage {
     public WebElement loginLink;
     @FindBy(linkText = "Log out")
     public WebElement logoutLink;
+
     @FindBy(linkText = "Shopping cart")
     public WebElement shoppingCartLink;
+
     @FindBy(linkText = "Wishlist")
     public WebElement wishListLink;
 
@@ -61,13 +63,10 @@ public class HomePage {
         return List.of(cameraPhotoLink, cellPhonesLink);
     }
 
-
-
-
     @FindBy(xpath = "//ul[contains(@class,'ui-autocomplete')]//li")
     public List<WebElement> suggestionList;
 
-    // Newsletter Block
+    // -------------------------Newsletter Block-------------------------------
     @FindBy(xpath = "div[@class='block block-newsletter']" )
     public WebElement newsletterBlock;
     @FindBy(xpath = "//strong[contains(text(), 'Newsletter')]")
@@ -79,20 +78,25 @@ public class HomePage {
     @FindBy(id = "newsletter-result-block")
     public WebElement subscriptionMessage;
 
-    //Footer
+
+    //--------------------------------Footer-------------------------------------
     @FindBy(xpath = "//div[@class='footer']")
     public WebElement footerBlock;
     @FindBy(xpath = "//div[@class='footer']//div[@class='footer-menu-wrapper']//div")
     public List<WebElement> footerMenuSections;
+
     // Sadece Information sütunundaki linkler
     @FindBy(xpath = "//div[@class='column information']//ul//li//a")
     public List<WebElement> informationLinks;
+
     // Customer Service sütunu
     @FindBy(xpath = "//div[@class='column customer-service']//ul//li//a")
     public List<WebElement> customerServiceLinks;
+
     // My Account sütunu
     @FindBy(xpath = "//div[@class='column my-account']//ul//li//a")
     public List<WebElement> myAccountLinks;
+
     // Follow Us (Sosyal medya ikonları)
     @FindBy(xpath = "//div[@class='column follow-us']//ul//li//a")
     public List<WebElement> followUsLinks;
@@ -102,6 +106,7 @@ public class HomePage {
 
     @FindBy(xpath = "//div[@class = 'footer-disclaimer']")
     public WebElement footerDisclaimerText;
+
 
     //---------------------------- Slider ---------------------------
     @FindBy(id = "nivo-slider")
@@ -115,6 +120,26 @@ public class HomePage {
 
     @FindBy(xpath = "//a[@class= 'nivo-nextNav']")
     public WebElement sliderRightArrow;
+
+
+    //-------------------- Featured Products ---------------------
+    @FindBy(xpath = "//strong[contains(text(), 'Featured products')]")
+    public WebElement featuredProductTitle;
+
+    @FindBy(xpath = "//h2[@class='product-title']//a")
+    public List<WebElement> featuredProducts;
+
+    @FindBy(xpath = "//h2[@class='product-title']")
+    public List<WebElement> featuredProductTitles;
+
+    @FindBy(xpath = "//div[@class='product-item']//span[@class='price actual-price']")
+    public List<WebElement> featuredProductPrices;
+
+    @FindBy(xpath = "//div[@class='product-item']//div[@class='picture']//a//img")
+    public List<WebElement> featuredProductImages;
+
+    @FindBy(xpath = "//div[@class='product-item']//input[@value='Add to cart']")
+    public List<WebElement> featuredAddToCartButtons;
 
     /*
     @FindBy(xpath = "//a[contains(text(),'Books')]")

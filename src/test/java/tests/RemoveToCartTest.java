@@ -45,7 +45,7 @@ public class RemoveToCartTest {
         Assert.assertTrue(ReusableMethods.isListNotEmpty(cartPage.cartItems));
 
         // 3. Ürünü sil + sepeti güncelle
-        cartPage.removeItems.click();
+        cartPage.removeItem.click();
         cartPage.updateShoppingCartButton.click();
 
         // 4. Sepetin boş olduğunu doğrula

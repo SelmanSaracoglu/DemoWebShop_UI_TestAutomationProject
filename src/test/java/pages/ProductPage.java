@@ -20,7 +20,6 @@ public class ProductPage {
     @FindBy(xpath = "//p[@class='content']")
     public WebElement addtoCartSuccessMessage;
 
-
     @FindBy(xpath = "//h2[@class='product-title']/a")
     public List<WebElement> productList;
     @FindBy(xpath = "//strong[@class='result']")
