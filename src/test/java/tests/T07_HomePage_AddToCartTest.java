@@ -281,6 +281,44 @@ public class T07_HomePage_AddToCartTest {
     }
 
     @Test(priority = 4)
+    public void testSameItemAddedTwice_IncreasesQuantity() {
+
+        homePage.loginLink.click();
+
+        String email = ConfigReader.getProperty("Email");
+        String password = ConfigReader.getProperty("Password");
+
+        loginPage.emailInput.sendKeys(email);
+        loginPage.passwordInput.sendKeys(password);
+        loginPage.loginButton.click();
+
+        Assert.assertTrue(homePage.logoutLink.isDisplayed(), "Login başarısız!");
+
+        homePage.categories.get(0).click();
+        productPage.productList.get(0).click();
+        productPage.addtoCart.click();
+
+        Driver.getDriver().navigate().back();
+        Driver.getDriver().navigate().back();
+
+        homePage.categories.get(0).click();
+        productPage.productList.get(0).click();
+        productPage.addtoCart.click();
+
+        // Sepete git
+        homePage.shoppingCartLink.click();
+        ReusableMethods.waitForSeconds(2);
+
+        Assert.assertEquals(cartPage.cartItems.size(),1,
+                "Aynı ürün ayrı satırlar halinde eklendi!");
+
+        String quantity = cartPage.itemQuantities.get(0).getAttribute("value");
+
+        Assert.assertEquals(quantity,"2","Aynı üründen 2 adet eklenmedi!");
+
+        System.out.println("✅ Aynı ürün tekrar eklenince miktar 2 oldu, satır birikmesi yok.");
+
+    }
 
     @AfterMethod
     public void tearDown() {
