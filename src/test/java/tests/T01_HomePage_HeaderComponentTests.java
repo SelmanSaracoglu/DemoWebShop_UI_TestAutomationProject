@@ -5,7 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import com.demo.framework.pages.pages.HomePage;
+import com.demo.framework.pages.HomePage;
 import com.demo.framework.core.ConfigReader;
 import com.demo.framework.core.Driver;
 
