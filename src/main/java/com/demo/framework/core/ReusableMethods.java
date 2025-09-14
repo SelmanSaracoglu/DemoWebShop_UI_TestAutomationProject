@@ -1,4 +1,4 @@
-package utilities;
+package com.demo.framework.core;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

@@ -1,20 +1,15 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.RegisterPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.TestDataReader;
-import utilities.TestDataWriter;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.demo.framework.pages.pages.HomePage;
+import com.demo.framework.pages.pages.LoginPage;
+import com.demo.framework.pages.pages.RegisterPage;
+import com.demo.framework.core.ConfigReader;
+import com.demo.framework.core.Driver;
+import com.demo.framework.core.TestDataReader;
+import com.demo.framework.core.TestDataWriter;
 
 public class RegisterTest {
 

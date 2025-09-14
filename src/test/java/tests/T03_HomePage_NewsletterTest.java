@@ -1,15 +1,14 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
+import com.demo.framework.pages.pages.HomePage;
+import com.demo.framework.core.ConfigReader;
+import com.demo.framework.core.Driver;
+import com.demo.framework.core.ReusableMethods;
 
 public class T03_HomePage_NewsletterTest {
 

@@ -1,7 +1,5 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -9,17 +7,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.RegisterPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
+import com.demo.framework.pages.pages.HomePage;
+import com.demo.framework.pages.pages.LoginPage;
+import com.demo.framework.core.ConfigReader;
+import com.demo.framework.core.Driver;
+import com.demo.framework.core.ReusableMethods;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
-import java.util.List;
 import java.util.Set;
 
 public class T02_HomePage_FooterComponentTests {

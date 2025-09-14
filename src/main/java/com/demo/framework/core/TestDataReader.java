@@ -1,4 +1,4 @@
-package utilities;
+package com.demo.framework.core;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

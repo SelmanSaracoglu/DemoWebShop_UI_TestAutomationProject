@@ -1,15 +1,13 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.RegisterPage;
-import utilities.ConfigReader;
-import utilities.Driver;
+import com.demo.framework.pages.pages.HomePage;
+import com.demo.framework.pages.pages.LoginPage;
+import com.demo.framework.core.ConfigReader;
+import com.demo.framework.core.Driver;
 
 public class NegativeLoginTest {
 

@@ -1,7 +1,5 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -9,13 +7,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.ProductPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
+import com.demo.framework.pages.pages.CartPage;
+import com.demo.framework.pages.pages.HomePage;
+import com.demo.framework.pages.pages.LoginPage;
+import com.demo.framework.pages.pages.ProductPage;
+import com.demo.framework.core.ConfigReader;
+import com.demo.framework.core.Driver;
+import com.demo.framework.core.ReusableMethods;
 
 import java.util.Random;
 

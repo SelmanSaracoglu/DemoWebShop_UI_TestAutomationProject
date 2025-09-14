@@ -1,4 +1,4 @@
-package pages;
+package com.demo.framework.pages.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
